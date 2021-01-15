@@ -1,0 +1,28 @@
+
+<%- include("header") -%>
+     <h1>Looking for a Job</h1>
+     <h2>Find the perfect job that suits you!</h2>
+     <div class="companylogin">
+       <h3>For Company</h3>
+       <form class="" action="/" method="post">
+         <%=message%>
+       <h4>Post a Job</h4>
+        <button type="submit" class="btn btn-success btn-lg">Start Hiring</button>
+       </form>
+     </div>
+     <div class="employeelogin">
+       <h3>For Employee</h3>
+       <%=quote%>
+       <form class="" action="/login" method="post">
+         Email:
+         <input type="email" name="email" value=""><br><br>
+         Password:
+         <input type="password" name="password" value=""> <br>
+         <button type="submit" name="button" class="btn btn-primary btn-lg">Login</button>
+         <p>OR</p><hr>
+         <br><a href="/register"><button type="button" class="btn btn-primary btn-lg">Create Account</button></a>
+       </form>
+     </div>
+     </div>
+     </body>
+     </html>

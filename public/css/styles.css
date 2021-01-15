@@ -1,0 +1,41 @@
+.hreflink
+{
+  margin-left: 395px;
+}
+.navheader
+{font-size: 1.5rem;}
+.navbar-brand
+{font-size: 2rem}
+.bodycss
+{background-image: url("/images/job.jpg");
+background-repeat: no-repeat;
+  background-size: 1550px 750px;
+}
+.companylogin
+{margin-left: 1000px;
+display: inline-block;
+padding: 10px 10px 10px 10px;}
+.employeelogin
+{margin-left: 1050px;
+display: inline-block;
+padding: 10px 10px 10px 10px;
+}
+.formcreate
+{display:inline-block;
+}
+.formcreate input
+{width: 300px;
+}
+.formcreate div
+{display: inline-block;}
+.cardregister
+{display: inline-block;
+border-radius: 5%;
+margin-left:560px;
+margin-top: 200px;
+}
+.registerheading
+{margin-left: 585px;
+position: absolute;
+top:140px;
+}
