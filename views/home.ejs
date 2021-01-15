@@ -1,27 +1,42 @@
 
 <%- include("header") -%>
-     <h1>Looking for a Job</h1>
-     <h2>Find the perfect job that suits you!</h2>
+     <h1 style="font-family: 'Texturina', serif; font-style:bold;">Looking for a Job</h1>
+     <h2 style="font-family: 'Lora', serif; font-size:1.8rem;">Find a perfect job that suits you!</h2>
      <div class="companylogin">
-       <h3>For Company</h3>
+       <h2 style="font-family: 'Abril Fatface', cursive;">For Company</h2>
        <form class="" action="/" method="post">
          <%=message%>
-       <h4>Post a Job</h4>
-        <button type="submit" class="btn btn-success btn-lg">Start Hiring</button>
+       <h4 style="font-family: 'Lora', serif;">Post a Job</h4>
+        <button type="submit" class="btn btn-success btn-lg" style="font-family: 'Hind Madurai', sans-serif; font-size: 1.5rem">Start Hiring</button>
        </form>
      </div>
      <div class="employeelogin">
-       <h3>For Employee</h3>
+       <h2 style="font-family: 'Abril Fatface', cursive;">For Employee</h2>
        <%=quote%>
-       <form class="" action="/login" method="post">
+       <!-- <form class="" action="/login" method="post">
          Email:
          <input type="email" name="email" value=""><br><br>
          Password:
          <input type="password" name="password" value=""> <br>
-         <button type="submit" name="button" class="btn btn-primary btn-lg">Login</button>
+         <button type="submit" name="button" class="btn btn-primary btn-lg"  style="font-family: 'Hind Madurai', sans-serif; font-size: 1.5rem">Login</button>
          <p>OR</p><hr>
-         <br><a href="/register"><button type="button" class="btn btn-primary btn-lg">Create Account</button></a>
-       </form>
+         <br><a href="/register"><button type="button" class="btn btn-primary btn-lg"  style="font-family: 'Hind Madurai', sans-serif; font-size: 1.5rem">Create Account</button></a>
+       </form> -->
+       <div class="card cardlogin" style="border-radius: 20px;">
+
+     <div class="card-body">
+       <form class="formlogin" action="/login" method="post">
+         <div style="font-family: 'Fraunces', serif; font-weight: bold">
+       <label for="exampleInputEmail1" class="form-label">Email address</label>
+       <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+       <label for="exampleInputPassword1" class="form-label">Password</label>
+       <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+         <br>
+     <button type="submit" class="btn btn-primary btn-lg">Login</button>
+     </div>
+   </form>
+     </div>
+   </div>
      </div>
      </div>
      </body>

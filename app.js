@@ -76,7 +76,8 @@ else {
     else res.send("<h1>No Jobs Available</h1>");
   }
   });
-}});
+}}
+);
 });
 app.post("/login",function(req,res)
 {const email=req.body.email;
@@ -103,8 +104,6 @@ else{
   }
   else res.render("home",{quote: "Invlaid email and password",message:null});
 }
-
-
-})})
+})});
 app.listen(3000,function()
 {console.log("Server successfully ran!");});
