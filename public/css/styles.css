@@ -39,3 +39,8 @@ margin-top: 200px;
 position: absolute;
 top: 120px;
 }
+p.registerheading
+{margin-left: 630px;
+  color:red;
+position: absolute;
+top: 170px;}

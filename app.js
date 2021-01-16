@@ -56,11 +56,18 @@ const id=req.body.id;
 console.log(id);
 });
 app.get("/register",function(req,res)
-{res.render("register");});
+{res.render("register",{imp:null});});
 app.post("/register",function(req,res)
-{ const user=new User({
-  email: req.body.email,
-  password: md5(req.body.password)
+{
+User.find({email: req.body.email},function(err,userlist)
+{if(err)
+console.log(err);
+else
+{
+if(userlist.length===0)
+{const user=new User({
+email: req.body.email,
+password: md5(req.body.password)
 });
 user.save(function(err)
 {if(err)
@@ -78,6 +85,12 @@ else {
   });
 }}
 );
+}
+else {
+  res.render("register",{imp: "Username not Available!"});
+}
+}
+});
 });
 app.post("/login",function(req,res)
 {const email=req.body.email;
