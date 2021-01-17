@@ -2,31 +2,62 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Imbue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
     <title>Job</title>
   </head>
-  <body>
+  <body style="background-color:#80ffdb; margin-bottom: 50px; margin-top: 50px;" >
+      <h1 style="font-family: 'Yusei Magic', sans-serif; text-align:center">Enter your details here</h1>
+    <div class="jobdiv">
     <form class="" action="/postajob" method="post">
-      <input type="hidden" name="job" value=<%=id%>  >
-      <input type="hidden" name="userid" value=<%=userid%> >
-      <h1>Personal Information</h1>
-      Name:
-       <input type="text" name="name" value=""><br>
-       DOB:
-       <input type="date" name="dob" value=""><br>
-       <h1>Qualifications</h1>
-       <h2>Intermediate</h2>
-       SchoolName:<input type="text" name="school" value="">   Board:<input type="text" name="board" value=""><br>
-       Passing Year:<input type="number" name="Year" value="">
-       Percentage:<input type="text" name="perc" value="">
-       <h1>High School</h1>
-       SchoolName:<input type="text" name="hschool" value="">   Board:<input type="text" name="hboard" value=""><br>
-       Passing Year:<input type="number" name="hyear" value="">
-       Percentage/CGPA:<input type="text" name="hperc" value="">
-       <h1>Work Experience:</h1>
-       <textarea name="we" rows="8" cols="80"></textarea>
-       Award & Honors:
-       <textarea name="ah" rows="8" cols="80"></textarea>
-       <button type="submit" name="button">Submitt</button>
-    </form>
+        <input type="hidden" name="job" value=<%=id%>  >
+        <input type="hidden" name="userid" value=<%=userid%> >
+        <h2>Personal Information</h2>
+        <hr>
+        <div class="personal">
+          <label for="name">Name:</label>
+           <input type="text" name="name" value=""><br>
+         <label for="dob">DOB:</label>
+           <input type="date" name="dob" value=""><br>
+           <label for="contact">Phone:</label>
+           <input type="number" name="contact">
+        </div>
+        <div class="qualification">
+          <h2>Qualifications</h2>
+        <hr>
+        <h2>Intermediate</h2>
+        <label for="school">School</label>
+        <input type="text" name="school" value="">
+         <label for="board">Board:</label><input type="text" name="board" value=""><br>
+       <label for="year">PassingYear</label>
+        <input type="number" name="Year" value="">
+        <label for="perc">Percentage:</label>
+        <input type="text" name="perc" value="">
+         <h2>High School</h2>
+         <label for="hschool">School</label>
+         <input type="text" name="hschool" value="">
+         <label for="hboard">Board:</label>
+        <input type="text" name="hboard" value=""><br>
+        <label for="hyear">PassingYear:</label>
+        <input type="number" name="hyear" value="">
+        <label for="hperc">Percentage:</label>
+        <input type="text" name="hperc" value="">
+            </div>
+           <hr>
+           <div class="we">
+             <h2>Work Experience:</h2>
+              <textarea name="we" rows="8" cols="80"></textarea><br>
+            <h2>Awards/honors</h2>
+              <textarea name="ah" rows="8" cols="80"></textarea><br><br>
+              <button type="submit" name="button" class="btn btn-primary btn-lg" style="margin-left: 40px;">Submit</button></div>
+
+
+      </form>
+    </div>
+
   </body>
 </html>

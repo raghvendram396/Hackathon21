@@ -47,3 +47,31 @@ top: 170px;}
 .cardsuccess{
   display: inline-block;
 }
+.jobdiv
+{
+  background-color:white;
+  display: inline-block;
+  margin-left:250px;
+  width: 65%;
+  padding: 20px;
+  border-radius:5%;
+}
+.jobdiv input
+{margin-left: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 200px;
+}
+.jobdiv label
+{ margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  width: 55px;
+  font-family: 'Imbue', serif;
+ font-size: 1.2rem;
+}
+.jobdiv h2
+{font-family: 'Yusei Magic', sans-serif;
+margin-top: 10px;
+}

@@ -27,6 +27,7 @@ const trackSchema={
   user_id: String,
   company_id: String,
   name: String,
+  contact: Number,
   dob: Date,
   IntermediateSname: String,
   IntermediatePerc: String,
@@ -83,7 +84,7 @@ Track.findOne({user_id: req.body.userid, company_id: req.body.id},function(err,f
 console.log(err);
 else {
   if(found!=null)
-  {res.send("Already Applied to this job!");}
+  {res.render("Already");}
   else res.render("job",{id: req.body.id,userid: req.body.userid});
 }});
 });
@@ -96,6 +97,7 @@ const trac=new Track({
   company_id: jobid,
   name: req.body.name,
   dob: req.body.dob,
+  contact: req.body.contact,
   IntermediateSname: req.body.school,
   IntermediatePerc: req.body.perc,
   HighSname: req.body.hschool,
