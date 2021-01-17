@@ -9,6 +9,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 mongoose.connect("mongodb://localhost:27017/companydb",{useNewUrlParser: true});
 var flag=0;
+var useridvar;
 const companySchema={
   company: String,
   jobtitle: String,
@@ -22,8 +23,21 @@ const userSchema={
   email: String,
   password: String
 };
+const trackSchema={
+  user_id: String,
+  company_id: String,
+  name: String,
+  dob: Date,
+  IntermediateSname: String,
+  IntermediatePerc: String,
+  HighSname: String,
+  HighPerc: String,
+  workExp :String,
+  awards: String
+}
 const CompanyJob=mongoose.model("CompanyJob",companySchema);
 const User=mongoose.model("User",userSchema);
+const Track=mongoose.model("Track",trackSchema);
 app.get("/",function(req,res)
 {if(flag===0)
 res.render("home",{quote:null,message:null});
@@ -37,23 +51,64 @@ app.post("/",function(req,res)
 {res.render("company");});
 app.post("/company",function(req,res)
 {const jobpost=new CompanyJob(
-  {  company:req.body.company,
+  { company:req.body.company,
     jobtitle:req.body.jobtitle,
     workExp:req.body.wexperience,
     location:req.body.location,
     post:req.body.post,
     salary:req.body.salary,
-   description:req.body.description}
+   description:req.body.description
+ }
 );
 jobpost.save(function()
 {flag=1;
 res.redirect("/");
 });
 });
+app.get("/login",function(req,res)
+{
+CompanyJob.find({},function(err,list)
+{if(err)
+console.log(err);
+else
+{
+if(list)
+res.render("companylist",{jobs: list,userid: useridvar});
+}
+});});
 app.post("/apply",function(req,res)
 {
-const id=req.body.id;
-console.log(id);
+Track.findOne({user_id: req.body.userid, company_id: req.body.id},function(err,found)
+{if(err)
+console.log(err);
+else {
+  if(found!=null)
+  {res.send("Already Applied to this job!");}
+  else res.render("job",{id: req.body.id,userid: req.body.userid});
+}});
+});
+app.post("/postajob",function(req,res)
+{ useridvar=req.body.userid;
+const jobid=req.body.job;
+const userid=req.body.userid;
+const trac=new Track({
+  user_id: userid,
+  company_id: jobid,
+  name: req.body.name,
+  dob: req.body.dob,
+  IntermediateSname: req.body.school,
+  IntermediatePerc: req.body.perc,
+  HighSname: req.body.hschool,
+  HighPerc: req.body.hperc,
+  workExp: req.body.we,
+  awards: req.body.ah
+});
+trac.save(function(err)
+{if(err)
+console.log(err);
+else
+res.redirect("/login");
+});
 });
 app.get("/register",function(req,res)
 {res.render("register",{imp:null});});
@@ -71,29 +126,20 @@ password: md5(req.body.password)
 });
 user.save(function(err)
 {if(err)
-console.log(err);
-else {
-  CompanyJob.find({},function(err,list)
-  {if(err)
   console.log(err);
-  else
-  {
-    if(list)
-    res.render("companylist",{jobs: list});
-    else res.send("<h1>No Jobs Available</h1>");
-  }
-  });
-}}
+else
+res.render("registersucces");
+}
 );
 }
 else {
-  res.render("register",{imp: "Username not Available!"});
+  res.render("register",{imp: "Email already Registered!"});
 }
 }
 });
 });
 app.post("/login",function(req,res)
-{const email=req.body.email;
+{ const email=req.body.email;
 const password=md5(req.body.password);
 User.findOne({email: email},function(err,founduser)
 {if(err)
@@ -106,8 +152,8 @@ else{
   console.log(err);
   else
   {
-    if(list)
-    res.render("companylist",{jobs: list});
+  if(list)
+  res.render("companylist",{jobs: list,userid: founduser._id});
   }
   });}
   else {
@@ -115,7 +161,7 @@ else{
   }
 
   }
-  else res.render("home",{quote: "Invlaid email and password",message:null});
+  else res.render("home",{quote: "Invalid email and password",message:null});
 }
 })});
 app.listen(3000,function()

@@ -23,7 +23,7 @@ padding: 10px 10px 10px 10px;
 .formcreate
 {display:inline-block;
 }
-.formcreate input
+.formcreate input, .formlogin input
 {width: 300px;
 }
 .formcreate div
@@ -44,3 +44,6 @@ p.registerheading
   color:red;
 position: absolute;
 top: 170px;}
+.cardsuccess{
+  display: inline-block;
+}

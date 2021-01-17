@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Job</title>
+  </head>
+  <body>
+    <form class="" action="/postajob" method="post">
+      <input type="hidden" name="job" value=<%=id%>  >
+      <input type="hidden" name="userid" value=<%=userid%> >
+      <h1>Personal Information</h1>
+      Name:
+       <input type="text" name="name" value=""><br>
+       DOB:
+       <input type="date" name="dob" value=""><br>
+       <h1>Qualifications</h1>
+       <h2>Intermediate</h2>
+       SchoolName:<input type="text" name="school" value="">   Board:<input type="text" name="board" value=""><br>
+       Passing Year:<input type="number" name="Year" value="">
+       Percentage:<input type="text" name="perc" value="">
+       <h1>High School</h1>
+       SchoolName:<input type="text" name="hschool" value="">   Board:<input type="text" name="hboard" value=""><br>
+       Passing Year:<input type="number" name="hyear" value="">
+       Percentage/CGPA:<input type="text" name="hperc" value="">
+       <h1>Work Experience:</h1>
+       <textarea name="we" rows="8" cols="80"></textarea>
+       Award & Honors:
+       <textarea name="ah" rows="8" cols="80"></textarea>
+       <button type="submit" name="button">Submitt</button>
+    </form>
+  </body>
+</html>
