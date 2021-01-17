@@ -61,14 +61,10 @@ app.post("/registration",function(req,res)
 app.post("/registrationform",function(req,res){
 	const company_name = req.body.company;
 	CompanyJob.find({cin_number: req.body.cin},function(err,temp){
-		if(temp){
-			res.render("hiring-page", {msg:"Already Registered With this CIN Number"})
-		}
-		else{
 			const value = new CompanyJob({
 		company: req.body.company,
 	    cin_number: req.body.cin,
-	    password: req.body.pass, 
+	    password: req.body.pass,
         jobtitle: req.body.jobtitle,
         WorkExp: req.body.wexperience,
         location: req.body.location,
@@ -79,9 +75,8 @@ app.post("/registrationform",function(req,res){
 	value.save(function(err){
 		res.render("home",{message:null,quote:"Posted Successfully!!"});
 	});
-		}
 	});
-	
+
 });
 
 

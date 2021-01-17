@@ -4,15 +4,17 @@
   <meta charset="utf-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap" rel="stylesheet">
   <title>Company List</title>
   </head>
-  <body style="margin-left:20px;">
+  <body style="margin-left:20px; background-color: #80ffdb;">
     <div class="jumbotron">
     <% jobs.forEach(function(job) { %>
     <form action="/apply" method="post">
     <input type="hidden" value=<%=job._id%> name="id">
     <input type="hidden" value=<%=userid%> name="userid">
-    <h3 class="display-4"> <%=job.company%> </h3>
+    <h3 class="display-4" style="font-family: 'Fraunces', serif;"> <%=job.company%> </h3>
     <p class="lead"> <%=job.description%></p>
     <hr class="my-4">
     <p><b>Job Title:</b><%=job.title %></p>
