@@ -11,6 +11,8 @@ mongoose.connect("mongodb://localhost:27017/companydb",{useNewUrlParser: true});
 var flag=0;
 var useridvar;
 const companySchema={
+	cin_number: Number,
+	password: String,
   company: String,
   jobtitle: String,
   WorkExp: String,
@@ -48,8 +50,42 @@ flag=0;
 }
 });
 
-app.post("/",function(req,res)
-{res.render("company");});
+
+
+app.post("/hiring",function(req,res)
+{res.render("hiring-page",{msg:null});});
+
+app.post("/registration",function(req,res)
+{res.render("company",{msg:null});});
+
+app.post("/registrationform",function(req,res){
+	const company_name = req.body.company;
+	CompanyJob.find({cin_number: req.body.cin},function(err,temp){
+		if(temp){
+			res.render("hiring-page", {msg:"Already Registered With this CIN Number"})
+		}
+		else{
+			const value = new CompanyJob({
+		company: req.body.company,
+	    cin_number: req.body.cin,
+	    password: req.body.pass, 
+        jobtitle: req.body.jobtitle,
+        WorkExp: req.body.wexperience,
+        location: req.body.location,
+        post: req.body.post,
+        salary: req.body.salary,
+		description:req.body.description
+	});
+	value.save(function(err){
+		res.render("home",{message:null,quote:"Posted Successfully!!"});
+	});
+		}
+	});
+	
+});
+
+
+
 app.post("/company",function(req,res)
 {const jobpost=new CompanyJob(
   { company:req.body.company,
@@ -66,6 +102,8 @@ jobpost.save(function()
 res.redirect("/");
 });
 });
+
+
 app.get("/login",function(req,res)
 {
 CompanyJob.find({},function(err,list)
