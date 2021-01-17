@@ -199,5 +199,5 @@ else{
   else res.render("home",{quote: "Invalid email and password",message:null});
 }
 })});
-app.listen(3000,function()
+app.listen(process.env.PORT || 3000,function()
 {console.log("Server successfully ran!");});
