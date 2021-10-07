@@ -1,17 +1,21 @@
+
+require ('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose=require("mongoose");
 const md5=require("md5");
 const app=express();
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
-mongoose.connect("mongodb://localhost:27017/companydb",{useNewUrlParser: true});
+const user=process.env.MONGOUSER
+const pass=process.env.MONGOPASS
+mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.zksak.mongodb.net/Job_Portal?retryWrites=true&w=majority`,{useNewUrlParser: true,useUnifiedTopology:true});
 var flag=0;
 var useridvar;
 const companySchema={
-	cin_number: Number,
+	cin_number: String,
 	password: String,
   company: String,
   jobtitle: String,
@@ -41,6 +45,8 @@ const trackSchema={
 const CompanyJob=mongoose.model("CompanyJob",companySchema);
 const User=mongoose.model("User",userSchema);
 const Track=mongoose.model("Track",trackSchema);
+
+
 app.get("/",function(req,res)
 {if(flag===0)
 res.render("home",{quote:null,message:null});
@@ -60,22 +66,26 @@ app.post("/registration",function(req,res)
 
 app.post("/registrationform",function(req,res){
 	const company_name = req.body.company;
-	CompanyJob.find({cin_number: req.body.cin},function(err,temp){
+	// CompanyJob.find({cin_number: req.body.cin},function(err,temp){
 			const value = new CompanyJob({
-		company: req.body.company,
-	    cin_number: req.body.cin,
-	    password: req.body.pass,
+        company: req.body.company,
+        cin_number: req.body.cin,
+        password: req.body.pass,
         jobtitle: req.body.jobtitle,
         WorkExp: req.body.wexperience,
         location: req.body.location,
         post: req.body.post,
         salary: req.body.salary,
-		description:req.body.description
+        description:req.body.description
 	});
 	value.save(function(err){
+    if(err)
+    return console.log(err);
+    else{
 		res.render("home",{message:null,quote:"Posted Successfully!!"});
+    }
 	});
-	});
+	// });
 
 });
 
