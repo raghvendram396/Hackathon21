@@ -61,8 +61,22 @@ flag=0;
 app.post("/hiring",function(req,res)
 {res.render("hiring-page",{msg:null});});
 
-app.post("/registration",function(req,res)
-{res.render("company",{msg:null});});
+app.get("/company_registration",function(req,res)
+{res.render("New_Posting_Registration",{msg:null});});
+
+app.get("/company_login",function(req,res)
+{res.render("Company_login",{msg:null});});
+
+app.post("/login_details_check",function(req,res){
+  CompanyJob.findOne({cin_number:req.body.cin_num,password:req.body.pass},(err,result)=>{
+    if(err){
+       res.send(err)
+    }
+    else{
+      res.send(result)
+    }
+  })
+})
 
 app.post("/registrationform",function(req,res){
 	const company_name = req.body.company;
