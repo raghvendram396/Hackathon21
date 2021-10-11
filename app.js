@@ -14,7 +14,9 @@ const user = process.env.MONGOUSER
 const pass = process.env.MONGOPASS
 mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.zksak.mongodb.net/Job_Portal?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 const fileUpload = require('express-fileupload'); // file upload
-app.use(fileUpload());
+app.use(fileUpload({
+    useTempFiles: true
+}));
 var cloudinary = require("cloudinary").v2
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -24,15 +26,18 @@ cloudinary.config({
 var flag = 0;
 var useridvar;
 const Company_Profile_Schema = {
+    Company_name: String,
     logo_url: String,
     cin_number: String,
     email: String,
     password: String,
-    Company_name: String,
     description: String,
     contact_no: String,
     ceo_name: String,
     headquarter_location: String,
+    city: String,
+    state: String,
+    country: String,
     postal: Number
 }
 const companySchema = {
@@ -92,7 +97,20 @@ app.post("/login_details_check", function(req, res) {
             if (result === null) {
                 res.render("Company_login", { msg: 1 })
             } else {
-                res.render("Company_Profile", { data: result })
+                res.render("Company_Profile", {
+                    Company_name: result.company_name,
+                    logo_url: result.logo_url,
+                    cin_number: result.cin_number,
+                    email: result.email,
+                    description: result.description,
+                    contact_no: result.contact_no,
+                    ceo_name: result.ceo_name,
+                    headquarter_location: result.headquarter_location,
+                    city: result.city,
+                    state: result.state,
+                    country: result.country,
+                    postal: result.postal
+                })
             }
         }
     })
@@ -108,7 +126,81 @@ app.post("/company_registartion_datails", (req, res) => {
             if (result !== null) {
                 res.render("Company_Registration", { msg: "This CIN Number or Email has already taken" });
             } else {
-                console.log(req)
+                if (req.files === null) {
+                    const value = new CompanyProfile({
+                        Company_name: req.body.c_name,
+                        logo_url: "",
+                        cin_number: req.body.cin_num,
+                        email: req.body.email,
+                        password: req.body.pass,
+                        description: req.body.desc,
+                        contact_no: `${req.body.c_code}+${req.body.phone}`,
+                        ceo_name: req.body.ceo_name,
+                        headquarter_location: req.body.loc,
+                        city: req.body.city,
+                        state: req.body.state,
+                        country: req.body.country,
+                        postal: req.body.postal
+                    })
+                    value.save(function(err) {
+                        if (err)
+                            return console.log(err);
+                        else {
+                            console.log("no files")
+                            res.render("Company_Profile", {
+                                Company_name: req.body.c_name,
+                                logo_url: "",
+                                cin_number: req.body.cin_num,
+                                email: req.body.email,
+                                description: req.body.desc,
+                                contact_no: `${req.body.c_code}+${req.body.phone}`,
+                                ceo_name: req.body.ceo_name,
+                                headquarter_location: req.body.loc,
+                                city: req.body.city,
+                                state: req.body.state,
+                                country: req.body.country,
+                                postal: req.body.postal
+                            });
+                        }
+                    });
+                } else {
+                    cloudinary.uploader.upload(req.files.file.tempFilePath, (err, result) => {
+                        if (err) {
+                            res.render("Company_Registration", { msg: "Some Error Occured, Please Try Again" });
+                        } else {
+                            const value = new CompanyProfile({
+                                Company_name: req.body.c_name,
+                                logo_url: result.url,
+                                cin_number: req.body.cin_num,
+                                email: req.body.email,
+                                password: req.body.pass,
+                                description: req.body.desc,
+                                contact_no: `${req.body.c_code}+${req.body.phone}`,
+                                ceo_name: req.body.ceo_name,
+                                headquarter_location: req.body.loc,
+                                postal: req.body.postal
+                            })
+                            value.save(function(err) {
+                                if (err)
+                                    return console.log(err);
+                                else {
+                                    console.log("with files")
+                                    res.render("Company_Profile", {
+                                        Company_name: req.body.c_name,
+                                        logo_url: result.url,
+                                        cin_number: req.body.cin_num,
+                                        email: req.body.email,
+                                        description: req.body.desc,
+                                        contact_no: `${req.body.c_code}+${req.body.phone}`,
+                                        ceo_name: req.body.ceo_name,
+                                        headquarter_location: req.body.loc,
+                                        postal: req.body.postal
+                                    });
+                                }
+                            });
+                        }
+                    })
+                }
             }
         }
     })

@@ -19,11 +19,11 @@ $(document).ready(function() {
             },
             email: {
                 required: true,
-                minlength: 3,
+                minlength: 3
             },
             pass: {
                 required: true,
-                minlength: 6,
+                minlength: 5
             },
             repass: {
                 required: true,
@@ -31,12 +31,31 @@ $(document).ready(function() {
             },
             ceo_name: {
                 required: true,
-                minlength: 2,
+                minlength: 2
+            },
+            c_code: {
+                maxlength: 2
             },
             phone:{
                 maxlength: 11
             },
+            desc: {
+                required: true
+            },
+            loc: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            country: {
+                required: true
+            },
             postal:{
+                required: true,
                 maxlength:6
             }
         }
@@ -103,11 +122,13 @@ $(document).ready(function() {
 
     // ---------------------------------Logo Upload-------------------------------------
     
-    $("#wizard-picture").change(function(e){
+    $("#wizard_picture").change(function(e){
         if(e.target.files[0].type=="image/jpeg" || e.target.files[0].type=="image/png"){
             readURL(this);
         }
     })
+
+    
 
     // Wizard Initialization
     $('.wizard-card').bootstrapWizard({
@@ -197,7 +218,7 @@ $(document).ready(function() {
 
 
     // Prepare the preview for profile picture
-    // $("#wizard-picture").change(function() {
+    // $("#wizard_picture").change(function() {
     //     readURL(this);
     //     console.log(readURL(this))
     // });
