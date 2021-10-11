@@ -18,13 +18,13 @@
   <body class="bodycss">
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="font-family: 'Lobster', cursive;">Find My Job</a>
+        <a class="navbar-brand navhome" href="/" style="font-family: 'Lobster', cursive;">Find My Job</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active hreflink" aria-current="page" href="#" style="font-family: 'Big Shoulders Stencil Text', cursive;
+            <a class="nav-link active hreflink" aria-current="page" href="/" style="font-family: 'Big Shoulders Stencil Text', cursive;
 font-family: 'Lobster', cursive;  font-size: 1.5rem">A perfect place to land your dream Job!</a>
           </div>
         </div>
@@ -46,19 +46,13 @@ font-family: 'Lobster', cursive;  font-size: 1.5rem">A perfect place to land you
        <%=quote%>
        <div class="card cardlogin" style="border-radius: 20px;">
      <div class="card-body">
-       <form class="formlogin" action="/login" method="post">
-         <div style="font-family: 'Fraunces', serif; font-weight: bold">
-       <label for="exampleInputEmail1" class="form-label">Email address</label>
-       <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-       <label for="exampleInputPassword1" class="form-label">Password</label>
-       <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+       <form class="formlogin" action="/signin" method="get">
          <br>
-     <button type="submit" class="btn btn-primary btn-lg">Login</button> OR
-     <form class="" action="" method="get">
-    <button type="" name="" class="btn btn-primary btn-lg"><a href="register" style="text-decoration:none; color: white;">Create Account</a></button>
+     <button type="submit" class="btn btn-primary btn-lg">Login</button>    </form>OR
+     <form class="" action="/register" method="get">
+    <button type="submit" name="" class="btn btn-primary btn-lg">Create Account</button>
      </form>
      </div>
-   </form>
      </div>
    </div>
      </div>

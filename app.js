@@ -10,6 +10,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
+const cors=require("cors");
+const Bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 const user = process.env.MONGOUSER
 const pass = process.env.MONGOPASS
 mongoose.connect(`mongodb+srv://${user}:${pass}@cluster0.zksak.mongodb.net/Job_Portal?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -51,10 +56,31 @@ const companySchema = {
     salary: String,
     description: String
 };
-const userSchema = {
-    email: String,
-    password: String
-};
+const userSchema = new mongoose.Schema({
+		fname: String,
+		lname: String,
+		address: String,
+		state: String,
+		city: String,
+		pin: String,
+		gender: String,
+		dob: Date,
+		education:String,
+		password: String,
+		email: {
+			 type: String,
+			 trim: true,
+			 lowercase: true,
+			 unique: true,
+			 validate: {
+					 validator: function(v) {
+							 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+					 },
+					 message: "Please enter a valid email"
+			 },
+			 required: [true, "Email required"]
+	 }
+  });
 const trackSchema = {
     user_id: String,
     company_id: String,
@@ -210,6 +236,9 @@ app.post("/Check_Profile", (req, res) => {
     res.render("Company_Profile", { data: req.body })
 })
 
+app.post("/registration",function(req,res)
+{res.render("company",{msg:null});});
+
 app.post("/registrationform", function(req, res) {
     const company_name = req.body.company;
     // CompanyJob.find({cin_number: req.body.cin},function(err,temp){
@@ -237,112 +266,137 @@ app.post("/registrationform", function(req, res) {
 
 
 
-app.post("/company", function(req, res) {
-    const jobpost = new CompanyJob({
-        company: req.body.company,
-        jobtitle: req.body.jobtitle,
-        workExp: req.body.wexperience,
-        location: req.body.location,
-        post: req.body.post,
-        salary: req.body.salary,
-        description: req.body.description
-    });
-    jobpost.save(function() {
-        flag = 1;
-        res.redirect("/");
-    });
+app.post("/company",function(req,res)
+{const jobpost=new CompanyJob(
+  { company:req.body.company,
+    jobtitle:req.body.jobtitle,
+    workExp:req.body.wexperience,
+    location:req.body.location,
+    post:req.body.post,
+    salary:req.body.salary,
+   description:req.body.description
+ }
+);
+jobpost.save(function()
+{flag=1;
+res.redirect("/");
+});
 });
 
+app.get("/login",function(req,res)
+{
+CompanyJob.find({},function(err,list)
+{if(err)
+console.log(err);
+else
+{
+if(list)
+res.render("companylist",{jobs: list,userid: useridvar});
+}
+});});
+app.post("/apply",function(req,res)
+{
+Track.findOne({user_id: req.body.userid, company_id: req.body.id},function(err,found)
+{if(err)
+console.log(err);
+else {
+  if(found!=null)
+  {res.render("Already");}
+  else res.render("job",{id: req.body.id,userid: req.body.userid});
+}});
+});
+app.post("/postajob",function(req,res)
+{ useridvar=req.body.userid;
+const jobid=req.body.job;
+const userid=req.body.userid;
+const trac=new Track({
+  user_id: userid,
+  company_id: jobid,
+  name: req.body.name,
+  dob: req.body.dob,
+  contact: req.body.contact,
+  IntermediateSname: req.body.school,
+  IntermediatePerc: req.body.perc,
+  HighSname: req.body.hschool,
+  HighPerc: req.body.hperc,
+  workExp: req.body.we,
+  awards: req.body.ah
+});
+trac.save(function(err)
+{if(err)
+console.log(err);
+else
+res.redirect("/login");
+});
+});
+app.get("/register",function(req,res)
+{
+	res.render("register",{errmsg:""});
+});
 
-app.get("/login", function(req, res) {
-    CompanyJob.find({}, function(err, list) {
-        if (err)
-            console.log(err);
-        else {
-            if (list)
-                res.render("companylist", { jobs: list, userid: useridvar });
-        }
-    });
-});
-app.post("/apply", function(req, res) {
-    Track.findOne({ user_id: req.body.userid, company_id: req.body.id }, function(err, found) {
-        if (err)
-            console.log(err);
-        else {
-            if (found != null) { res.render("Already"); } else res.render("job", { id: req.body.id, userid: req.body.userid });
-        }
-    });
-});
-app.post("/postajob", function(req, res) {
-    useridvar = req.body.userid;
-    const jobid = req.body.job;
-    const userid = req.body.userid;
-    const trac = new Track({
-        user_id: userid,
-        company_id: jobid,
-        name: req.body.name,
-        dob: req.body.dob,
-        contact: req.body.contact,
-        IntermediateSname: req.body.school,
-        IntermediatePerc: req.body.perc,
-        HighSname: req.body.hschool,
-        HighPerc: req.body.hperc,
-        workExp: req.body.we,
-        awards: req.body.ah
-    });
-    trac.save(function(err) {
-        if (err)
-            console.log(err);
-        else
-            res.redirect("/login");
-    });
-});
-app.get("/register", function(req, res) { res.render("register", { imp: null }); });
-app.post("/register", function(req, res) {
-    User.find({ email: req.body.email }, function(err, userlist) {
-        if (err)
-            console.log(err);
-        else {
-            if (userlist.length === 0) {
-                const user = new User({
-                    email: req.body.email,
-                    password: md5(req.body.password)
-                });
-                user.save(function(err) {
-                    if (err)
-                        console.log(err);
-                    else
-                        res.render("registersucces");
-                });
-            } else {
-                res.render("register", { imp: "Email already Registered!" });
-            }
-        }
-    });
-});
-app.post("/login", function(req, res) {
-    const email = req.body.email;
-    const password = md5(req.body.password);
-    User.findOne({ email: email }, function(err, founduser) {
-        if (err)
-            console.log(err);
-        else {
-            if (founduser) {
-                if (founduser.password === password) {
-                    CompanyJob.find({}, function(err, list) {
-                        if (err)
-                            console.log(err);
-                        else {
-                            if (list)
-                                res.render("companylist", { jobs: list, userid: founduser._id });
-                        }
-                    });
-                } else {
-                    res.render("home", { quote: "Wrong Password", message: null });
-                }
+app.get("/signin",function(req,res) {
+	res.render("signin",{errmsg: ""});
+})
+app.post("/register",function(req,res)
+{
+User.findOne({email: req.body.email},function(err,user) {
+	if(err) {
+		console.log(err);
+	}
+	else {
+		if(!user){
+			var gg=req.body.gender;
+			var newuser=new User({
+				fname: req.body.fname,
+				lname: req.body.lname,
+				email: req.body.email,
+				password: md5(req.body.password),
+        address: req.body.address,
+				state: req.body.state,
+				city: req.body.city,
+				pin: req.body.pin,
+				gender: gg,
+				dob: req.body.dob,
+				education: req.body.education
+			});
+			newuser.save(function(err) {
+				if(err) {res.render("register",{errmsg: err.message});}
+				else {
+					res.render("signin",{errmsg: "Registration Successfull. Please Sigin"});
+				}
+			});
+		}
+		else {
+			res.render("register",{errmsg: "Email already registered with another account"});
+		}
+	}
 
-            } else res.render("home", { quote: "Invalid email and password", message: null });
-        }
-    })
+});
+});
+
+app.post("/signin",function(req,res) {
+
+User.findOne({email: req.body.email},function(err,user) {
+	if(!user) {
+		res.redirect("signin",{errmsg: "Email not registered, Please try again with valid email"});
+	}
+	else {
+		var pass=md5(req.body.password);
+		if(pass===user.password)
+		{
+			CompanyJob.find({},function(err,joblist){
+				if(err) {
+					console.log(err);
+				}
+				else {
+					res.render("companylist",{jobs: joblist,userid: user._id});
+				}
+			})
+		}
+		else {
+			res.redirect("/signin",{errmsg: "Wrong Password"});
+		}
+	}
+});
 });
 app.listen(process.env.PORT || 3000, function() { console.log("Server successfully ran!"); });
