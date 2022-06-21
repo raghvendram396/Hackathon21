@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Texturina&family=Nanum+Myeongjo&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Hind+Madurai:wght@300&family=Lobster&family=Lora&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bodoni+Moda:ital@1&family=Hind+Madurai:wght@300&family=Fraunces:wght@100&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <link rel="stylesheet" href="/css/newstyles.css">
+    <title>Register</title>
+</head>
+
+<body class="regbody" style="font-family: 'Fraunces', serif;">
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <form class="formcreate" action="/register" method="post">
+        <section class="h-100 bg-dark">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <div class="card card-registration my-4">
+                            <div class="row g-0">
+                                <div class="col-xl-6 d-none d-xl-block">
+                                    <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="card-body p-md-5 text-black">
+                                        <h3 class="mb-5 text-uppercase">Registration Form</h3>
+                                        <h4 style="color: red;font-weight: bold">
+                                            <%=errmsg%>
+                                        </h4>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                    <input type="text" id="form3Example1m" class="form-control form-control-lg" name="fname" placeholder="First Name" />
+                                                    <!-- <label class="form-label" for="form3Example1m">First name</label> -->
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                    <input type="text" id="form3Example1n" class="form-control form-control-lg" name="lname" placeholder="Last Name" />
+                                                    <!-- <label class="form-label" for="form3Example1n">Last name</label> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" placeholder="Addess" />
+                                            <!-- <label class="form-label" for="form3Example8">Address</label> -->
+                                        </div>
+                                        <div class="form-outline mb-4 myadd">
+                                            <!-- <input type="text" id="form3Example90" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example90">Pincode</label> -->
+                                            <input type="text" id="form3Example90" class="form-control form-control-lg" name="state" placeholder="State"></input>
+                                            <input type="text" id="form3Example90" class="form-control form-control-lg" name="city" placeholder="City"></input>
+                                            <input type="text" id="form3Example90" class="form-control form-control-lg" name="pin" placeholder="Pincode"></input>
+                                        </div>
+
+                                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                                            <h5 class="mb-0 me-4">Gender: </h5>
+
+                                            <div class="form-check form-check-inline mb-0 me-4">
+                                                <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female" />
+                                                <label class="form-check-label" for="femaleGender">Female</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline mb-0 me-4">
+                                                <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                                                <label class="form-check-label" for="maleGender">Male</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline mb-0">
+                                                <input class="form-check-input" type="radio" name="gender" id="otherGender" value="other" />
+                                                <label class="form-check-label" for="otherGender">Other</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example9">Date of Birth</label>
+                                            <input type="date" id="form3Example9" class="form-control form-control-lg" placeholder="Date of birth" />
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <label class="form-label" for="form3Example9"><h5>Education details</h5></label>
+                                            <select class="select">
+                    <!-- <option value="1"></option> -->
+
+                    <option value="" disabled selected hidden>Select highest degree achieved</option>
+                    <option name="education" value="Doctoral">Doctoral Degree</option>
+                    <option name="education" value="Master">Master's Degree</option>
+                    <option name="education" value="Bachelor's">Bachelor's Degree</option>
+                    <option name="education" value="Others">Others</option>
+                  </select>
+
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="form3Example97" class="form-control form-control-lg" name="email" placeholder="EmailId" />
+                                            <!-- <label class="form-label" for="form3Example97">Email ID</label> -->
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form3Example97" class="form-control form-control-lg" name="password" placeholder="Password" required/>
+                                            <!-- <label class="form-label" for="form3Example97">Email ID</label> -->
+                                        </div>
+                                        <div class="d-flex justify-content-end pt-3">
+                                            <!-- <button type="button" class="btn btn-light btn-lg">Reset all</button> -->
+                                            <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+  </div>
+</div>
+</body>
+
+</html>

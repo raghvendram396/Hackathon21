@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Company_Profile.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.theme.css">
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.theme.min.css">
+    <script type="text/javascript " src="/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript " src="/jquery-ui/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="first" class="container bootstrap snippets bootdey animate__animated animate__backInLeft">
+        <div class="row">
+            <div class="profile-nav col-md-3 common_rem">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src=<%=logo_url%> alt="">
+                        </a>
+                        <h1>
+                            <%= Company_name %>
+                        </h1>
+                    </div>
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a onclick="profile()" id='profile' style="cursor: pointer;"> <i class="fa fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a id='totaljob' onclick="totaljob()" style="cursor: pointer;"> <i class="fa fa-list"></i> Total <span class="label label-warning pull-right r-activity"><%= Total_Job %></span></a>
+                        </li>
+                        <li>
+                            <a href="/logout" style="cursor: pointer;"> <i class="fa fa-sign-out"></i>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <button id='post' type="button" class="btn btn-primary btn-lg">Post a New Job</button>
+            </div>
+            <script>
+                // $('#edit').click(() => {
+                //     $('#unfold').hide()
+                // })
+                function profile() {
+                    $('.common_rem1').fadeIn()
+                }
+
+                function totaljob() {
+                    $('.common_rem1').fadeToggle()
+                }
+            </script>
+            <div class="profile-info col-md-9" id="unfold">
+                <div class="panel common_rem common_rem1">
+                    <div class="bio-graph-heading">
+                        <%= description %>
+                    </div>
+                    <h1>Details</h1>
+                    <div class="panel-body bio-graph-info">
+                        <div class="row container-fluid" style='box-shadow: 0.5em 0.5em 1em orange ;'>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; ">
+                                <span class="col-md-5 detailed">Company Name :</span>
+                                <span class="col-md-7 " id='comp'><%= Company_name %></span>
+                            </div>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; ">
+                                <span class="col-md-5 detailed">Location :</span>
+                                <span class="col-md-7 "><%= headquarter_location %></span>
+                            </div>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; ">
+                                <span class="col-md-5 detailed">CIN NUMBER :</span>
+                                <span class="col-md-7 " id='cinn'><%= cin_number %></span>
+                            </div>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; ">
+                                <span class="col-md-5 detailed">CEO Name :</span>
+                                <span class="col-md-7 "><%= ceo_name %></span>
+                            </div>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; ">
+                                <span class="col-md-5 detailed">Email :</span>
+                                <span class="col-md-7 "><%= email %></span>
+                            </div>
+                            <div class="col-md-6 container-fluid " style="padding-top: 1em; padding-bottom: 1em; ">
+                                <span class="col-md-5 detailed">Contact No :</span>
+                                <span class="col-md-7 "><%= contact_no %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1>Jobs</h1>
+                    <% for(var i=0; i< x.length; i++) { %>
+                        <div class='row container-fluid posted_data posted<%= i %>'>
+                            <div class='panel posted_data1'>
+                                <div class='panel-body'>
+                                    <div class='bio-chart'>
+                                        <div style="display:inline;width:100px;height:100px; "><canvas width="100 " height="100px "></canvas><span style="font-weight: 500;color: darkgreen; ">Total Registered</span><input class="knob
+                                " id='counting' data-width="100 " data-height="100 " data-displayprevious="true " data-thickness=".2 " value='<%=x[i].count%>' data-fgcolor="#e06b7d " data-bgcolor="#e8e8e8 " style="width: 54px; height: 33px; position: absolute; vertical-align: middle;
+                                margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224,
+                                107, 125); padding: 0px; -webkit-appearance: none; background: none; "></div>
+                                    </div>
+                                    <div class="bio-desk ">
+                                        <h3><span style="color: brown; font-weight: 600; ">Job ID: </span>
+                                            <%=x[i].Job_ID%>
+                                        </h3>
+                                        <p><span style="color: brown; font-weight: 600; ">Job Titel: </span>
+                                            <%=x[i].Job_Category%>
+                                        </p>
+                                        <p><span style="color: brown; font-weight: 600; ">Posting Date: </span>
+                                            <%=x[i].Posting_Date%>
+                                        </p>
+                                        <p><span style="color: brown; font-weight: 600; ">Last Date: </span>
+                                            <%=x[i].Apply_Before%>
+                                        </p>
+                                        <p class='expand<%= i %>'><span style="color: brown; font-weight: 600; ">Job Schedule: </span>
+                                            <%=x[i].Job_Schedule%>
+                                        </p>
+                                        <p class="expand<%= i %>"><span style="color: brown; font-weight: 600; ">Experience: </span>
+                                            <%=x[i].Experience%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class='see_more<%= i %> ss'>see more</p>
+                                <div class="container expand<%= i %>" style="padding-bottom: 1em; ">
+                                    <span class="col-md-4 descript">Job Location :</span>
+                                    <span class="col-md-8 moredesc"><%=x[i].Job_Locations%></span>
+                                </div>
+                                <div class="container expand<%= i %>" style="padding-bottom: 1em; ">
+                                    <span class="col-md-4 descript">Job Description :</span>
+                                    <span class="col-md-8 moredesc"><%=x[i].Job_Description%></span>
+                                </div>
+                                <div class="container expand<%= i %>" style="padding-bottom: 1em; ">
+                                    <span class="col-md-4 descript">Responsibilities :</span>
+                                    <span class="col-md-8 moredesc"><%=x[i].Responsibilities%></span>
+                                </div>
+                                <div class="container expand<%= i %>" style="padding-bottom: 1em; ">
+                                    <span class="col-md-4 descript">Basic Qualifications :</span>
+                                    <span class="col-md-8 moredesc"><%=x[i].Base_Qualifications%></span>
+                                </div>
+                                <% if(x[i].Preferred_Skills!=="") { %>
+                                    <div class="container expand<%= i %>" style="padding-bottom: 1em; ">
+                                        <span class="col-md-4 descript">Preferred Skills :</span>
+                                        <span class="col-md-8 moredesc"><%=x[i].Preferred_Skills%></span>
+                                    </div>
+                                    <% } %>
+                                        <div class="ui grid expand<%= i %>" style="margin-bottom: 1em;">
+                                            <div style="text-align: center;" class="twelve wide column left floated right aligned">
+                                                <p class="expand<%= i %> see_less<%= i %> ss">Back</p>
+                                            </div>
+                                            <div class="four wide column">
+                                                <button class="ui primary button left floated left aligned" id="delete_post<%= i %>">Delete This Post</button>
+                                            </div>
+                                            <div class='eight wide column' id='password_checker<%= i %>' style="margin-left: auto;margin-right: auto;">
+                                                <a id='password_checka<%= i %>' style="margin-left: auto;margin-right: auto;color: red;">Wrong Password!! Enter Correct Password<br/></a>
+                                                <div class="ui action input">
+                                                    <input type="password" name='password_check<%= i %>' id='password_check<%= i %>' placeholder="Enter Your Password">
+                                                    <button id='final_delete<%= i %>' class="ui button red" type="button">Confirm Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('.expand<%= i %>').hide();
+                        $('#password_checka<%= i %>').hide()
+                        $('#password_checker<%= i %>').hide()
+                    })
+                    $('.see_more<%= i %>').click(function() {
+                        $('.expand<%= i %>').show();
+                        $('.see_more<%= i %>').hide()
+                        $('.common_rem').hide()
+                        $('#unfold').removeClass('col-md-9')
+                        for (var j = 0; j < Number('<%= x.length %>'); j++) {
+                            if (j != Number('<%= i %>')) {
+                                $(`.posted${j}`).hide();
+                            }
+                        }
+                    })
+                    $('.see_less<%= i %>').click(function() {
+                        $('.expand<%= i %>').hide();
+                        $('.see_more<%= i %>').show()
+                        $('.see_less<%= i %>').hide()
+                        $('.common_rem').show()
+                        $('#unfold').addClass('col-md-9')
+                        for (var j = 0; j < Number('<%= x.length %>'); j++) {
+                            if (j != Number('<%= i %>')) {
+                                $(`.posted${j}`).show();
+                            }
+                        }
+                    })
+                    $('#delete_post<%= i %>').click(() => {
+                        $('#delete_post<%= i %>').hide()
+                        $('#password_checker<%= i %>').show()
+                    })
+                    $('#final_delete<%= i %>').click(() => {
+                        if ($('#password_check<%= i %>').val() === '') {
+                            $('#password_checka<%= i %>').text("Empty Password!! First fill it before confirm")
+                            $('#password_checka<%= i %>').show()
+                        } else {
+                            $.post('/password_check', {
+                                email: '<%= email %>',
+                                cin_num: '<%= cin_number %>',
+                                password: $('#password_check<%= i %>').val()
+                            }, (data, status) => {
+                                if (data === false) {
+                                    $('#password_checka<%= i %>').text("Wrong Password!! Enter Correct Password")
+                                    $('#pass_checka<%= i %>').show();
+                                } else {
+                                    $.post('/delete_post_data', {
+                                        id: '<%=x[i]._id%>',
+                                        _id: data,
+                                        Total_Job: '<%= Total_Job %>' - 1
+                                    }, (result) => {
+                                        if (result === false) {
+                                            alert('First Login or Register Yourself!!')
+                                            window.location.href = '/company_login'
+                                        } else {
+                                            alert(result)
+                                            setTimeout(() => {
+                                                location.reload();
+                                            }, 50)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                </script>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <div id='second' class='container animate__animated animate__backInRight'>
+        <div class="ui grid row " style="align-items: center; margin-top: 2em; ">
+            <h1 style="text-align:center; " class="left floated four wide column ">Post Your Job Here</h1>
+            <button id='cancel' style="height: 3em; " type="button " class="ui button right floated red four wide column ">Cancel</button>
+        </div>
+        <hr>
+        <img class="ui medium circular image " style="margin-left: auto;margin-right: auto; " src='<%=logo_url%>'>
+        <form class='ui form grid tall stacked segment'>
+            <div style="margin-left: auto;margin-right: auto; " class="row fourteen wide column ">
+                <div class="field six wide column ">
+                    <a class="ui red ribbon label " id='company_namea'>Fill this Input, It's required field</a>
+                    <label>Company Name</label>
+                    <input type="text " name='company_name' id='company_name' value='<%= Company_name %>' placeholder='Company Name' readonly>
+                </div>
+                <div class="field four wide column ">
+                    <a class="ui red ribbon label " id='Job_IDa'>Fill this Input, It's required field</a>
+                    <label>Job ID</label>
+                    <input type='text' name='Job_ID' id='Job_ID' placeholder="Job ID ">
+                </div>
+                <div class="field four wide column ">
+                    <label>Experience</label>
+                    <input type="text " name='Experience' id='Experience' placeholder='Experience in years'>
+                </div>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="row fourteen wide column ">
+                <div class="field six wide column ">
+                    <a class="ui red ribbon label " id='Job_Categorya'>Fill this Input, It's required field</a>
+                    <label>Job Title</label>
+                    <input type="text " name='Job_Category' id='Job_Category' placeholder="Job Category " required>
+                </div>
+                <div class="field five wide column ">
+                    <label>Posting Date</label>
+                    <input name='Posting_Date' type='text' id='Posting_Date' class="form-control " readonly value='<%=today%>'>
+                </div>
+                <div class="field five wide column ">
+                    <a class="ui red ribbon label " id='Apply_Beforea'>Fill this Input, It's required field</a>
+                    <label>Apply Before</label>
+                    <input name='Apply_Before' type='date' id='Apply_Before' class="form-control " required>
+                </div>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="row fourteen wide column ">
+                <div class="field ten wide column ">
+                    <a class="ui red ribbon label " id='Job_Locationsa'>Fill this Input, It's required field</a>
+                    <label>Job Location</label>
+                    <input type="number " name='Job_Locations' id='Job_Locations' placeholder="Job Location " required>
+                </div>
+                <div class="field six wide column ">
+                    <a class="ui red ribbon label " id='Job_Schedulea'>Fill this Input, It's required field</a>
+                    <label>Job_Schedule</label>
+                    <input type="text " name='Job_Schedule' id='Job_Schedule' placeholder="Full-Time/Part-Time/Flexible Schedule/Alternative Schedule " required>
+                </div>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="field fourteen wide column ">
+                <a class="ui red ribbon label " id='Job_Descriptiona'>Fill this Input, It's required field</a>
+                <label>Job Description</label>
+                <textarea name='Job_Description' id='Job_Description' rows="6 " required></textarea>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="field fourteen wide column ">
+                <a class="ui red ribbon label " id='Responsibilitiesa'>Fill this Input, It's required field</a>
+                <label>Responsibilities</label>
+                <textarea name='Responsibilities' id='Responsibilities' rows="6 " required></textarea>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="field fourteen wide column ">
+                <a class="ui red ribbon label " id='Base_Qualificationsa'>Fill this Input, It's required field</a>
+                <label>Basic Qualifications</label>
+                <textarea name='Base_Qualifications' id='Base_Qualifications' rows="6 " required></textarea>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="field fourteen wide column ">
+                <label>Preferred Skills</label>
+                <textarea name='Preferred_Skills' id='Preferred_Skills' rows="6 "></textarea>
+            </div>
+            <div style="margin-left: auto;margin-right: auto; " class="field fourteen wide column ">
+                <label>About Us</label>
+                <textarea name='About_Us' id='About_Us' rows="6 "></textarea>
+            </div>
+            <div class='ui grid seven wide column' id='pass_checker' style="margin-left: auto;margin-right: auto;">
+                <a id='pass_checka' style="margin-left: auto;margin-right: auto;color: red;">Wrong Password!! Enter Correct Password<br/></a>
+                <input class="ten wide column" type='password' name='pass_check' id='pass_check' placeholder='Enter Your Password'>
+                <button id='final_submit' class='five wide column ui button green' type='button'>Confirm Post</button>
+            </div>
+            <input name='Company_logo' id='Company_logo' value='<%=logo_url%>' hidden>
+            <input name='cin_num' id='cin_num' value='<%= cin_number %>' hidden>
+            <input name='count' id='count' value=0 hidden>
+            <button id='post_submit' class="ui button green six wide column " type='button'>Submit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+                $('#pass_checker').hide()
+                $('#second').hide();
+                $('form a').hide()
+                $.post('/fetch_post_data', {
+                    comp: $('#comp').text(),
+                    cin_num: $('#cinn').text()
+                }, function(data) {
+                    x = data
+                })
+            })
+            // $('#post_submit').click(()=>{
+            //     console.log("submit ")
+            //     $('form').submit(function(event){
+            //         console.log(event)
+            //     })
+            // })
+        $('#post_submit').click(() => {
+            if ($('#company_name').val() === '')
+                $('#company_namea').show()
+            if ($('#Job_ID').val() === '')
+                $('#Job_IDa').show()
+            if ($('#Job_Category').val() === '')
+                $('#Job_Categorya').show()
+            if ($('#Apply_Before').val() === '')
+                $('#Apply_Beforea').show()
+            if ($('#Job_Locations').val() === '')
+                $('#Job_Locationsa').show()
+            if ($('#Job_Schedule').val() === '')
+                $('#Job_Schedulea').show()
+            if ($('#Job_Description').val() === '')
+                $('#Job_Descriptiona').show()
+            if ($('#Responsibilities').val() === '')
+                $('#Responsibilitiesa').show()
+            if ($('#Base_Qualifications').val() === '')
+                $('#Base_Qualificationsa').show()
+            else {
+                $('#post_submit').hide()
+                $('#pass_checker').show()
+            }
+        })
+        $('#final_submit').click(() => {
+            if ($('#pass_check').val() === '') {
+                $('#pass_checka').show()
+            } else {
+                $.post('/password_check', {
+                    email: '<%= email %>',
+                    cin_num: '<%= cin_number %>',
+                    password: $('#pass_check').val()
+                }, (data, status) => {
+                    if (data === false) {
+                        $('#pass_checka').val('Enter Valid Password');
+                        $('#pass_checka').show();
+                    } else {
+                        var data1 = {
+                            Company_logo: $('#Company_logo').val(),
+                            company_name: $('#company_name').val(),
+                            Job_ID: $('#Job_ID').val(),
+                            Job_Category: $('#Job_Category').val(),
+                            Job_Locations: $('#Job_Locations').val(),
+                            Posting_Date: $('#Posting_Date').val(),
+                            Apply_Before: $('#Apply_Before').val(),
+                            Job_Schedule: $('#Job_Schedule').val(),
+                            Job_Description: $('#Job_Description').val(),
+                            Responsibilities: $('#Responsibilities').val(),
+                            Base_Qualifications: $('#Base_Qualifications').val(),
+                            Preferred_Skills: $('#Preferred_Skills').val(),
+                            About_Us: $('#About_Us').val(),
+                            Experience: $('#Experience').val(),
+                            cin_num: $('#cin_num').val(),
+                            count: $('#count').val(),
+                            _id: data,
+                            Total_Job: Number('<%= Total_Job %>') + 1
+                        }
+                        $.post('/post_by_company', data1, function(result, status) {
+                            if (result === false) {
+                                alert('First Login or Register Yourself!!')
+                                window.location.href = "/company_login"
+                            } else {
+                                alert(result);
+                                setTimeout(() => {
+                                    $('#second').removeClass('animate__backInRight')
+                                    $('#second').addClass('animate__backOutRight')
+                                    setTimeout(() => {
+                                        $('#second').hide();
+                                    }, 100)
+                                    setTimeout(() => {
+                                        location.reload(true);
+                                    }, 200)
+                                }, 50)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+        $('#cancel').click(() => {
+            $('#second').removeClass('animate__backInRight')
+            $('#second').addClass('animate__backOutRight')
+            setTimeout(() => {
+                $('#second').hide();
+            }, 500)
+            setTimeout(() => {
+                $('#first').show();
+                $('#second').removeClass('animate__backOutRight')
+                $('#second').addClass('animate__backInRight')
+            }, 700)
+        })
+        $('#post').click(() => {
+            $('#first').removeClass('animate__backInLeft')
+            $('#first').addClass('animate__backOutLeft')
+            setTimeout(() => {
+                $('#first').hide();
+            }, 500)
+            setTimeout(() => {
+                $('#second').show();
+                $('#first').removeClass('animate__backOutLeft')
+                $('#first').addClass('animate__backInLeft')
+            }, 700)
+        })
+    </script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
+    <!-- MDB -->
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js "></script>
+
+</body>
+
+</html>

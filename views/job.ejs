@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Imbue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/registerform.css">
+    <title>Job</title>
+  </head>
+  <body>
+      <!-- <h1 style="font-family: 'Yusei Magic', sans-serif; text-align:center">Enter your details here</h1>
+    <div class="jobdiv">
+    <form class="" action="/applyjob" method="post">
+        <input type="hidden" name="jobid" value=<%=job_id%>  >
+        <input type="hidden" name="userid" value=<%=user_id%> >
+        <input type="hidden" name="jobarr" value=<%=jobidarr%> >
+        <h2>Personal Information</h2>
+        <hr>
+        <div class="personal">
+          <label for="name">Name:</label>
+           <input type="text" name="name" value=""><br>
+         <label for="dob">DOB:</label>
+           <input type="date" name="dob" value=""><br>
+           <label for="contact">Phone:</label>
+           <input type="number" name="contact">
+        </div>
+        <div class="qualification">
+          <h2>Qualifications</h2>
+        <hr>
+        <h2>Intermediate</h2>
+        <label for="school">School</label>
+        <input type="text" name="school" value="">
+         <label for="board">Board:</label><input type="text" name="board" value=""><br>
+       <label for="year">PassingYear</label>
+        <input type="number" name="Year" value="">
+        <label for="perc">Percentage:</label>
+        <input type="text" name="perc" value="">
+         <h2>High School</h2>
+         <label for="hschool">School</label>
+         <input type="text" name="hschool" value="">
+         <label for="hboard">Board:</label>
+        <input type="text" name="hboard" value=""><br>
+        <label for="hyear">PassingYear:</label>
+        <input type="number" name="hyear" value="">
+        <label for="hperc">Percentage:</label>
+        <input type="text" name="hperc" value="">
+            </div>
+           <hr>
+           <div class="we">
+             <h2>Work Experience:</h2>
+              <textarea name="we" rows="8" cols="80"></textarea><br>
+            <h2>Awards/honors</h2>
+              <textarea name="ah" rows="8" cols="80"></textarea><br><br>
+              <h2>Skills</h2>
+              <textarea name="skill" rows="8" cols="80"></textarea><br><br>
+            </div>
+<input type="file" name="resume" placeholder="Resume"></input>
+  <button type="submit" name="button" class="btn btn-primary btn-lg" style="margin-left: 40px;">Submit</button>
+      </form>
+    </div> -->
+
+    <section class="h-100 h-custom gradient-custom-2">
+      <form action="/applyjob" method="post">
+        <input type="hidden" name="jobid" value=<%=job_id%>  >
+        <input type="hidden" name="userid" value=<%=user_id%> >
+        <input type="hidden" name="jobarr" value=<%=jobidarr%> >
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px; margin-bottom: 100px">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      <!-- <h3 class="fw-normal mb-5" style="color: #4835d4;">General Infomation</h3> -->
+
+                      <!-- <div class="mb-4 pb-2"> -->
+                        <!-- <select class="select">
+                          <option value="1">Title</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                          <option value="4">Four</option>
+                        </select>
+                      </div> -->
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev2" name="fname" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">First name</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev3" name="lname" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Last name</label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-12 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="date" id="form3Examplev2" name="dob" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">Date of birth</label>
+                          </div>
+
+                        </div>
+                        <!-- <div class="col-md-6 col-12 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="number" id="form3Examplev3" name="phone" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Phone</label>
+                          </div>
+
+                        </div> -->
+                      </div>
+
+                      <!-- <div class="mb-4 pb-2">
+                        <select class="select">
+                          <option value="1">Position</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                          <option value="4">Four</option>
+                        </select>
+                        <input type="text" id="form3Examplev3" name="lname" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Last name</label>
+                      </div> -->
+                     <h4>Education Qualifications: </h4>
+                     <hr>
+                      <!-- <div class="mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev4">Position</label>
+                        </div>
+                      </div> -->
+                      <h5 style="color: black;font-weight: 600;">Intermediate</h5>
+                      <div class="row">
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev2" name="Interschool" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">School</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev3" name="Interboard" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Board</label>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev2" name="InterPercentage" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">Percentage</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="number" id="form3Examplev3" name="interyop" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Year of Passing</label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <h5 style="color: black;font-weight: 600;">High School</h5>
+                      <div class="row">
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev2" name="highschool" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">School</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev3" name="highboard" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Board</label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="form3Examplev2" name="highPercentage" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">Percentage</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-12 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="number" id="form3Examplev3" name="highyop" class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Year of Passing</label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <!-- <div class="form-outline">
+                        <textarea type="text" rows="5" id="form3Examplev3" name="we" class="form-control form-control-lg"></textarea>
+                        <label class="form-label" for="form3Examplev3">Work Experience</label>
+                      </div> -->
+                      <!-- <div class="form-outline">
+                        <input type="text" rows="5" id="form3Examplev3" name="skills" class="form-control form-control-lg" placeholder="E.g: C,C++,React, etc"/>
+                        <label class="form-label" for="form3Examplev3">Skills</label>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 bg-indigo text-white">
+                    <div class="p-5">
+                      <!-- <h3 class="fw-normal mb-5">Contact Details</h3> -->
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <textarea rows="5" type="text" id="form3Examplea2" name="we" class="form-control form-control-lg"></textarea>
+                          <label class="form-label" for="form3Examplea2">Work Experience</label>
+                        </div>
+                      </div>
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <input type="text" id="form3Examplea2" name="skills" class="form-control form-control-lg" placeholder="E.g: C,C++,etc" />
+                          <label class="form-label" for="form3Examplea2">Skills</label>
+                        </div>
+                      </div>
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white" style="width: 400px">
+                          <input type="file" id="form3Examplea2" name="resume" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplea2">Upload Resume</label>
+                        </div>
+                      </div>
+                      <!-- <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplea2">Street + Nr</label>
+                        </div>
+                      </div> -->
+
+
+
+                  
+                      <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                        <input
+                          class="form-check-input me-3"
+                          type="checkbox"
+                          value=""
+                          id="form2Example3c" required
+                        />
+                        <label class="form-check-label text-white" for="form2Example3">
+                          I do accept the <a href="#!" class="text-white"><u>Terms and Conditions</u></a> of your site.
+                        </label>
+                      </div>
+
+                      <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Register</button>
+
+                    </div>
+                  </div>
+               
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+    </section>
+  </body>
+</html>

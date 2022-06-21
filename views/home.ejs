@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Find my Job</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Texturina&family=Nanum+Myeongjo&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Hind+Madurai:wght@300&family=Lobster&family=Lora&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bodoni+Moda:ital@1&family=Hind+Madurai:wght@300&family=Fraunces:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body class="bodycss">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand navhome" href="/" style="font-family: 'Lobster', cursive;">Find My Job</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active hreflink" aria-current="page" href="/" style="font-family: 'Big Shoulders Stencil Text', cursive;
+font-family: 'Lobster', cursive;  font-size: 1.5rem">A perfect place to land your dream Job!</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div style="margin-left: 10px;">
+     <h1 style="font-family: 'Texturina', serif; font-style:bold;">Looking for a Job</h1>
+     <h2 style="font-family: 'Lora', serif; font-size:1.8rem;">Find a perfect job that suits you!</h2>
+     <div class="companylogin">
+       <h2 style="font-family: 'Abril Fatface', cursive;">For Company</h2>
+       <form class="" action="/hiring" method="post">
+         <%=message%>
+       <h4 style="font-family: 'Lora', serif;">Post a Job</h4>
+        <button type="submit" class="btn btn-success btn-lg" style="font-family: 'Hind Madurai', sans-serif; font-size: 1.5rem">Start Hiring</button>
+       </form>
+     </div>
+     <div class="employeelogin">
+       <h2 style="font-family: 'Abril Fatface', cursive;">For Employee</h2>
+       <%=quote%>
+       <div class="card cardlogin" style="border-radius: 20px;">
+     <div class="card-body">
+       <form class="formlogin" action="/signin" method="get">
+         <br>
+     <button type="submit" class="btn btn-primary btn-lg">Login</button>    </form>OR
+     <form class="" action="/register" method="get">
+    <button type="submit" name="" class="btn btn-primary btn-lg">Create Account</button>
+     </form>
+     </div>
+     </div>
+   </div>
+     </div>
+     </div>
+     </body>
+     </html>

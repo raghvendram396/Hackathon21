@@ -1,0 +1,13 @@
+body {
+    background-image: url("../images/back7.jpg") !important;
+    background-size: cover !important;
+    padding: 10% 15% !important;
+}
+
+.segment {
+    display: flex !important;
+    /* margin-top: 2% !important; */
+    margin-bottom: auto !important;
+    border-radius: 2em !important;
+    padding: 4% !important;
+}

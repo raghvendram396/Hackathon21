@@ -1,0 +1,59 @@
+{
+  "name": "nitp",
+  "version": "1.0.0",
+  "description": "This web app is made using Node.js with express(), mongodb with mongoose for backend and for front end CSS, HTML, Javascript, Bootstrap and Jquery is Used.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.15.3",
+    "npm": ">=6.14.13"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.1.3",
+    "checkforce.js": "^2.3.0",
+    "cloudinary": "^1.27.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "form-data": "^4.0.0",
+    "icons": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mongoose": "^5.13.10",
+    "nodemailer": "^6.7.0",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemon": "^2.0.13",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
+    "request": "^2.88.2",
+    "semantic-ui-calendar": "0.0.8",
+    "url": "^0.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raghvendram396/Hackathon21.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raghvendram396/Hackathon21/issues"
+  },
+  "homepage": "https://github.com/raghvendram396/Hackathon21#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.16"
+  }
+}
