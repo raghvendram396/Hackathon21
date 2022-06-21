@@ -3,4 +3,5 @@ This web app is made using Node.js with express(), mongodb with mongoose driver 
 Here we use authentication using "JSON WEB TOKEN" and "Cookies".
 we have implemented many validation while filling any form.
 
-Link for site is:- https://job-portal-by-nitpians.herokuapp.com
+Link for site is:- https://salty-thicket-00948.herokuapp.com/
+
