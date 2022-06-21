@@ -23,7 +23,7 @@ const jwt = require('jsonwebtoken')
 const auth = require('./auth')
 const auth2=require("./auth2")
 
-mongoose.connect(`mongodb+srv://admin-mishra:test-123@cluster0.jjmbi.mongodb.net/companydb?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.jjmbi.mongodb.net/companydb?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 const fileUpload = require('express-fileupload'); // file upload
 app.use(fileUpload({
     useTempFiles: true
